@@ -1,0 +1,31 @@
+
+<html>
+<head>
+    <title>Temperature Converter</title>
+</head>
+<body>
+
+<nav>
+    <a href="index.html">Home</a> |
+    <a href="length.html">Length</a> |
+    <a href="weight.html">Weight</a> |
+    <a href="temp.html">Temperature</a> |
+    <a href="contact.html">Contact</a>
+</nav>
+
+<h2>Temperature Converter</h2>
+
+<input id="c" placeholder="Enter Celsius">
+<button onclick="convert()">Convert to Fahrenheit</button>
+<p id="result"></p>
+
+<script>
+function convert() {
+    let c = document.getElementById("c").value;
+    document.getElementById("result").innerText =
+        (c * 9/5 + 32) + " °F";
+}
+</script>
+
+</body>
+</html>

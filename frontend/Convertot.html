@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Measurement Converter</title>
+    <style>
+        body {
+            font-family: Arial;
+            margin: 0;
+            background: #e4ec45;
+        }
+
+        nav {
+            background: #333;
+            padding: 10px;
+        }
+
+        nav button {
+            background: #555;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+
+        nav button:hover {
+            background: #777;
+        }
+
+        .page {
+            display: none;
+            padding: 20px;
+        }
+
+        .active {
+            display: block;
+        }
+
+        input, textarea {
+            padding: 8px;
+            margin: 5px;
+            width: 200px;
+        }
+
+        button.convert {
+            padding: 8px;
+        }
+    </style>
+</head>
+<body><center>
+
+<nav>
+    <button onclick="showPage('home')">Home</button>
+    <button onclick="showPage('length')">Length</button>
+    <button onclick="showPage('weight')">Weight</button>
+    <button onclick="showPage('temp')">Temperature</button>
+    <button onclick="showPage('contact')">Contact</button>
+</nav>
+
+<!-- Home -->
+<div id="home" class="page active">
+    <h1>Measurement Converter</h1>
+    <p>Welcome! Convert Length, Weight and Temperature easily.</p>
+</div>
+
+<!-- Length -->
+<div id="length" class="page">
+    <h2>Length Converter</h2>
+
+    <input type="number" id="cm" placeholder="CM">
+    <button class="convert" onclick="cmToM()">CM → M</button>
+    <p id="cmResult"></p>
+
+    <input type="number" id="m" placeholder="M">
+    <button class="convert" onclick="mToCm()">M → CM</button>
+    <p id="mResult"></p>
+</div>
+
+<!-- Weight -->
+<div id="weight" class="page">
+    <h2>Weight Converter</h2>
+
+    <input type="number" id="kg" placeholder="KG">
+    <button class="convert" onclick="kgToG()">KG → G</button>
+    <p id="kgResult"></p>
+
+    <input type="number" id="g" placeholder="G">
+    <button class="convert" onclick="gToKg()">G → KG</button>
+    <p id="gResult"></p>
+</div>
+
+<!-- Temperature -->
+<div id="temp" class="page">
+    <h2>Temperature Converter</h2>
+
+    <input type="number" id="c" placeholder="Celsius">
+    <button class="convert" onclick="cToF()">C → F</button>
+    <p id="cResult"></p>
+
+    <input type="number" id="f" placeholder="Fahrenheit">
+    <button class="convert" onclick="fToC()">F → C</button>
+    <p id="fResult"></p>
+</div>
+
+<!-- Contact -->
+<div id="contact" class="page">
+    <h2>Contact / Feedback</h2>
+    <input type="text" placeholder="Your Name"><br>
+    <input type="email" placeholder="Your Email"><br>
+    <textarea placeholder="Your Feedback"></textarea><br>
+    <button>Send</button>
+</div>
+
+<script>
+    function showPage(page) {
+        document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+        document.getElementById(page).classList.add('active');
+    }
+
+    function cmToM() {
+        let cm = document.getElementById("cm").value;
+        document.getElementById("cmResult").innerText = cm / 100 + " meters";
+    }
+
+    function mToCm() {
+        let m = document.getElementById("m").value;
+        document.getElementById("mResult").innerText = m * 100 + " cm";
+    }
+
+    function kgToG() {
+        let kg = document.getElementById("kg").value;
+        document.getElementById("kgResult").innerText = kg * 1000 + " grams";
+    }
+
+    function gToKg() {
+        let g = document.getElementById("g").value;
+        document.getElementById("gResult").innerText = g / 1000 + " kg";
+    }
+
+    function cToF() {
+        let c = document.getElementById("c").value;
+        document.getElementById("cResult").innerText = (c * 9/5) + 32 + " °F";
+    }
+
+    function fToC() {
+        let f = document.getElementById("f").value;
+        document.getElementById("fResult").innerText = (f - 32) * 5/9 + " °C";
+    }
+</script>
+</center>
+</body>
+</html>
