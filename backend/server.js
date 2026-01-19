@@ -8,12 +8,17 @@ app.use(express.json());
 
 // Test route
 app.get("/", (req, res) => {
-  res.send("Unit Converter API is running");
+  res.send("Unit Converter API is running 🚀");
 });
 
 // Length conversion
 app.post("/convert/length", (req, res) => {
   const { value, from, to } = req.body;
+
+  if (typeof value !== "number") {
+    return res.status(400).json({ message: "Value must be a number" });
+  }
+
   let result;
 
   if (from === "meter" && to === "kilometer") {
@@ -27,8 +32,9 @@ app.post("/convert/length", (req, res) => {
   res.json({ result });
 });
 
-// ⭐ SERVER START
-const PORT = 5000;
+// ⭐ SERVER START (DEPLOY SAFE)
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`Server running on port ${PORT}`);
 });
+
